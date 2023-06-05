@@ -132,23 +132,8 @@
       }
     });
 
-    class ClearError extends Error {
-      constructor(message) {
-        super(message);
-        this.name = 'ClearError';
-      }
-    }
-
     document.querySelector('#error-btns > button:nth-child(6)').addEventListener('click', () => {
-      try {
         console.clear();
-      } catch (error) {
-        if (error instanceof ClearError) {
-          console.log('Custom error occurred:', error.message);
-        } else {
-          console.error('An error occurred:', error);
-        }
-      }
     });
 
     document.querySelector('#error-btns > button:nth-child(7)').addEventListener('click', () => {
@@ -167,18 +152,36 @@
       console.groupEnd();
     });
 
-    document.querySelector('#error-btns > button:nth-child(11)').addEventListener('click', () => {
-      function cseClass(name, num) {
-        this.name = name;
-        this.num = num;
-      }
+    class CustomError extends Error {
+    constructor(message) {
+    super(message);
+    this.name = 'CustomError';
+  }
+}
 
-      const cse110 = new cseClass("Software Engineering", 110);
-      const cse100 = new cseClass("Advanced Data Structures and Algorthms", 100);
-      const cse11 = new cseClass("Intro to Programming", 11);
+function handleButtonClick() {
+  try {
+    function CSEClass(name, num) {
+      this.name = name;
+      this.num = num;
+    }
 
-      console.table([cse110, cse100, cse11]);
-    });
+    const cse110 = new CSEClass("Software Engineering", 110);
+    const cse100 = new CSEClass("Advanced Data Structures and Algorithms", 100);
+    const cse11 = new CSEClass("Intro to Programming", 11);
+
+    console.table([cse110, cse100, cse11]);
+  } catch (error) {
+    if (error instanceof CustomError) {
+      console.log('Custom error occurred:', error.message);
+    } else {
+      console.error('An error occurred:', error);
+    }
+  }
+}
+
+document.querySelector('#error-btns > button:nth-child(11)').addEventListener('click', handleButtonClick);
+
 
     document.querySelector('#error-btns > button:nth-child(12)').addEventListener('click', () => {
       console.time('Timer Button');

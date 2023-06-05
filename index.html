@@ -51,6 +51,14 @@
 
 <body>
   <main>
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+      window.TrackJS && TrackJS.install({
+        token: "dc7f16d5057a4227b5cde09a17c65a0d"
+        // for more configuration options, see https://docs.trackjs.com
+      });
+    </script>
+
     <form>
       <fieldset>
         <legend>Error Calculator</legend>
@@ -214,14 +222,8 @@
     });
   </script>
 
-  <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
-  <script>
-    window.TrackJS && TrackJS.install({
-      token: "fcaf9be7e369457987c07e4ade3289ce"
-      // for more configuration options, see https://docs.trackjs.com
 
-    });
-  </script>
+
 
 </body>
 

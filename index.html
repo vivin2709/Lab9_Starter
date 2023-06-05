@@ -159,18 +159,18 @@
   }
 }
 
-function handleButtonClick() {
-  try {
-    function CSEClass(name, num) {
+    function handleButton(){
+    try {
+      function Profession(name, num) {
       this.name = name;
       this.num = num;
     }
 
-    const cse110 = new CSEClass("Software Engineering", 110);
-    const cse100 = new CSEClass("Advanced Data Structures and Algorithms", 100);
-    const cse11 = new CSEClass("Intro to Programming", 11);
+    const software_enginner = new Profession("Software Engineer", 100000);
+    const investment_banker = new Profession("Investment Banker", 200000);
+    const painter = new Profession("Painter", 40000);
 
-    console.table([cse110, cse100, cse11]);
+    console.table([software_enginner, investment_banker, painter]);
   } catch (error) {
     if (error instanceof CustomError) {
       console.log('Custom error occurred:', error.message);
@@ -179,19 +179,18 @@ function handleButtonClick() {
     }
   }
 }
+document.querySelector('#error-btns > button:nth-child(11)').addEventListener('click', handleButton);
 
-document.querySelector('#error-btns > button:nth-child(11)').addEventListener('click', handleButtonClick);
 
-
-    document.querySelector('#error-btns > button:nth-child(12)').addEventListener('click', () => {
+document.querySelector('#error-btns > button:nth-child(12)').addEventListener('click', () => {
       console.time('Timer Button');
     });
 
-    document.querySelector('#error-btns > button:nth-child(13)').addEventListener('click', () => {
+document.querySelector('#error-btns > button:nth-child(13)').addEventListener('click', () => {
       console.timeEnd('Timer Button');
     });
 
-    document.querySelector('#error-btns > button:nth-child(14)').addEventListener('click', () => {
+document.querySelector('#error-btns > button:nth-child(14)').addEventListener('click', function HandleBtnClick(){
       function deep() {
         function deeper() {
           function deepest() {
@@ -202,16 +201,26 @@ document.querySelector('#error-btns > button:nth-child(11)').addEventListener('c
         deeper();
       }
       deep();
+
     });
 
     document.querySelector('#error-btns > button:nth-child(15)').addEventListener('click', () => {
       try {
         boom();
       } catch (error) {
-        console.log('error!');
+        console.log('global error');
         boom();
       }
     });
   </script>
+
+<script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+<script>
+  window.TrackJS && TrackJS.install({ 
+    token: "fcaf9be7e369457987c07e4ade3289ce"
+    // for more configuration options, see https://docs.trackjs.com
+  });
+</script>
+                        
 </body>
 </html>
